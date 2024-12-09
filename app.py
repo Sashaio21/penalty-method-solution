@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 import plotly.graph_objs as go
-import plotly
+import plotly 
 import numpy as np
 import json
 from scipy.optimize import minimize
