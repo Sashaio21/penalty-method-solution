@@ -1,0 +1,8 @@
+flask 
+plotly
+numpy
+scipy
+sympy
+flask_cors
+pymongo
+html
