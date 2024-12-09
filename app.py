@@ -11,7 +11,7 @@ from pymongo import MongoClient
 import html
 import time
 
-
+ 
 # Подключение к MongoDB с использованием указанного URL
 client = MongoClient('mongodb+srv://usersdata:0hZzN9CAxapArcxI@cluster0.0fae0es.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster0')
 db = client.mydatabase  # Используем базу данных "mydatabase"
