@@ -9,7 +9,7 @@ from sympy import symbols, lambdify
 from flask_cors import CORS
 from pymongo import MongoClient
 import html
-import time
+import time 
 
  
 # Подключение к MongoDB с использованием указанного URL
@@ -35,22 +35,23 @@ def objective_function(x, expression):
 
 def constraint1(x, constraint_expr, constraint_type):
     x1, x2 = x
-
+    # print(len(constraint_type.replace(" ","")))
+    # print("test", constraint_type.replace(" ","")==">")
     func = lambdify((X1, X2), constraint_expr, 'numpy')
-    if constraint_type == ">=" or constraint_type == ">":
+    if constraint_type == ">=" or constraint_type.replace(" ","") == ">":
         return -func(x1, x2)
-    elif constraint_type == "<=" or constraint_type == "<":
+    elif constraint_type == "<=" or constraint_type.replace(" ","") == "<":
         return func(x1, x2)
     else:
         raise ValueError("Недопустимый тип ограничения")
 
 def constraint2(x, constraint_expr, constraint_type):
     x1, x2 = x
-    # print("test", constraint_type)
+    
     func = lambdify((X1, X2), constraint_expr, 'numpy')
-    if constraint_type == ">=" or constraint_type == ">":
+    if constraint_type == ">=" or constraint_type.replace(" ","") == ">":
         return -func(x1, x2)
-    elif constraint_type == "<=" or constraint_type == "<":
+    elif constraint_type == "<=" or constraint_type.replace(" ","") == "<":
         return func(x1, x2)
     else:
         raise ValueError("Недопустимый тип ограничения")
@@ -340,4 +341,5 @@ def solution_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)  # Убедитесь, что хост — 0.0.0.0
